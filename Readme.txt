@@ -67,6 +67,34 @@ New Skill:標準目錄建立、資料庫設計、資料模型撰寫、介面方�
 		internal/routers中router.go
 		Go:
 		撰寫入口main.go
+3.公共元件
+//本例採用檔案設定作為選型(go get viper)
+	錯誤標準化
+	pkg/errcode: common_code.go;errcode.go
+	common_code.go:預先定義項目中的部分公共錯誤碼，以便引導和規定大家使用
+	errcode.go:撰寫常用的一些錯誤處理公共方法
+	預設設定
+	configs:config.yaml
+	Server:服務設定，設定gin的執行模式、預設的HTTP監聽通訊埠，允許讀取和寫入的最大持續時間
+	App:應用設定，設定預設每頁數量、所允許的最大每頁數量，以及預設的應用記錄檔儲存路徑
+	Database:資料庫設定，主要是連接實例所必需的基礎參數
 
+	設定管理
 
+	pkg/setting:setting.go
+	對讀取設定的行為進行封裝
+	NewSetting方法，用於初始化本專案設定的基礎屬性，即設定設定檔的名稱為config、設定類型
+	為yaml，並且設定其設定路徑為相對路徑configs/，以確保在專案目錄下能夠成功啟動撰寫元件。
+	
+	pkg/setting:section.go
+	撰寫讀取區段設定的設定方法
+	
+	global:setting.go:
+	套件全域變數
+	將設定資訊和應用程式連結
+	對最初預估的三個區段(ServerSetting、AppSetting、DatabaseSetting)進行了設定
+	並宣告了全域變數
 
+	main.go:
+	初始化設定讀取
+	func init : 把設定檔內容對映到應用設定結構中的作用
