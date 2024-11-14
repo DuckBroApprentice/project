@@ -22,6 +22,7 @@ func Default() *Engine {
 　　4.gin.Run
 　　　解析位址，再呼叫http.ListenAndServe，將Engine實例作為Handler註冊進去，啟動服務，開始對外提供HTTP服務。
 二.專案設計
+New Skill:標準目錄建立、資料庫設計、資料模型撰寫、介面方法的設計、介面處理方法、啟動連線
 	1.目錄結構
 		configs:設定檔。
 		docs:文件集合。
