@@ -29,6 +29,10 @@ func init() {
 	}
 }
 
+// @title 部落格系統
+// @version 1.0
+// @description G0 語言程式設計之旅:一起用Go做專案
+// @termsOfService https://github.com/go-programming-tour-book
 func main() {
 	router := routers.NewRouter()
 	s := &http.Server{
