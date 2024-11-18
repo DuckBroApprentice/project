@@ -48,9 +48,20 @@ func (l Level) String() string {
 
 type Logger struct {
 	newLogger *log.Logger
-	ctx       context.Context
-	fields    Fields
-	callers   []string
+	/*log.Logger
+	package log
+		type Logger struct {
+		outMu sync.Mutex
+		out   io.Writer // destination for output
+
+		prefix    atomic.Pointer[string] // prefix on each line to identify the logger (but see Lmsgprefix)
+		flag      atomic.Int32           // properties
+		isDiscard atomic.Bool
+		}
+	*/
+	ctx     context.Context
+	fields  Fields
+	callers []string
 }
 
 func NewLogger(w io.Writer, prefix string, flag int) *Logger {
